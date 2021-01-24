@@ -13,6 +13,11 @@ class IOproccess extends SparkSessionProvider with Specializable{
   private val movCols=util.getColList(constant.MOVIE_COLUMNS)
   private val finalCol=util.getColList(constant.MOVIE_COLUMNS_LST)
 
+
+/*This method will read XML data of WIKIPEDIA dump and return the  Dataframe
+    Input-Arg1 : XML file landing directory/file
+    Output : Dataframe (type: DataFrame)
+  * */
   def getWikiDataset(path:String): DataFrame ={
     sparkSession.read.format(constant.XML_CLASS)
       .option("rootTag", constant.ROOT_TAG)
@@ -20,6 +25,10 @@ class IOproccess extends SparkSessionProvider with Specializable{
       .load(path).drop(constant.LINKS)
   }
 
+ /* This method will read CSV/Text data of Ratings dump and return the Dataframe
+  Input-Arg1 : CSV/Text file landing directory/file
+  Output : Dataframe (type: DataFrame)
+ * */
   def getRatingsDataSet(path:String): DataFrame ={
 
     val ratings=readInputdataFunc(path,"true","true")
@@ -29,6 +38,10 @@ class IOproccess extends SparkSessionProvider with Specializable{
       .drop(constant.DROP_COL)
   }
 
+/* This method will read CSV/Text data of Links dump and return the Dataframe
+  Input-Arg1 : text file landing directory/file
+  Output : Dataframe (type: DataFrame)
+ * */
   def getLinksDataSet(path:String): DataFrame ={
 
     val links=readInputdataFunc(path,"true","true")
@@ -36,9 +49,13 @@ class IOproccess extends SparkSessionProvider with Specializable{
     links
       .drop(constant.TMBD_ID)
       .withColumn("new_imdb_id",util.concatPrefix($"imdbId")).drop(constant.IMDB_ID)
-    //    linksDf.show(false)
+
   }
 
+/* This method will read CSV/Text data of Ratings dump and return the Dataframe
+  Input-Arg1 : CSV file landing directory/file
+  Output : Dataframe (type: DataFrame)
+ * */
   def getMovieDataSet(path:String): DataFrame ={
 
     //read movie-Dataset | 1995-12-15
@@ -63,7 +80,10 @@ class IOproccess extends SparkSessionProvider with Specializable{
       .select(finalCol.head,finalCol.tail: _*)
   }
 
-
+  /* This is genric function to read  CSV/Text data
+    Input-Arg1 : Input CSV file landing directory/file
+    Output : Dataframe (type: DataFrame)
+   * */
   def readInputdataFunc(filePath:String,header:String,schemaRef:String) =sparkSession.read.option("header",header).option("inferSchema",schemaRef).csv(filePath)
 
 }

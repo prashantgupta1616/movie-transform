@@ -8,6 +8,9 @@ object MovieMainCls {
   def main(args: Array[String]): Unit = {
 
     Logger.getLogger("org").setLevel(Level.INFO)
+    /*
+      Lets run the code
+    * */
     new MovieService().runFunc();
 
   }
