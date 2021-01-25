@@ -4,7 +4,7 @@ LABEL maintainer="Prashant.Gupta"
 
 ENV SPARK_APPLICATION_JAR_NAME MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar
 ENV SPARK_APPLICATION_MAIN_CLASS com.foo.movie.main.MovieMainCls
-ENV SPARK_APPLICATION_JAR_LOCATION "foo bar baz"
+ENV SPARK_APPLICATION_JAR_LOCATION "target/"
 
 COPY template.sh /
 
