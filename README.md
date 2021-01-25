@@ -47,7 +47,7 @@ Tech stack used
             --master local[*] --deploy-mode client \
             --name PilotProject_MovieData \
             --conf "spark.driver.bindAddress=127.0.0.1" \
-            --properties-file job.conf
+            --properties-file target/job.conf
             target/MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 
@@ -63,7 +63,7 @@ Tech stack used
   1. Let's Consider that we are using big data/Hadoop cluster having spark installed with java, scala and Postgres DB cluster
   2. git clone the code as;
   3. execute build.sh using the command "sh build.sh" --> it will build the code, now let's wait to finish build, post that one can find the executable at target directory.
-  4. export uber.jar (MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar) and property file to cluster edge/client node where we can submit the spark job.
+  4. export uber.jar and job.conf file (MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar) and property file to cluster edge/client node where we can submit the spark job.
   5. use below command to submit the job and supply/replace the additional parameters for config (executor, memory and so on if require)
 
     spark-submit \
