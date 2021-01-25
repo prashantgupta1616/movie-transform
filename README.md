@@ -13,10 +13,10 @@ docker desktop
 Why
 
 Spark is a general-purpose compute engine for a big data process, the reasons to choose
-        - Easy-to-use APIs for operating on large datasets.
-        - Reduced development effort to process variety of data as XML,JSON,Text/CSV
-        - A Unified Engine and automatic optimization process, can we run local, standalone and clusters
-        - Quick Development and test in various ways
+                - Easy-to-use APIs for operating on large datasets.
+                - Reduced development effort to process variety of data as XML,JSON,Text/CSV
+                - A Unified Engine and automatic optimization process, can we run local, standalone and clusters
+                - Quick Development and test in various ways
 
 
 Docker - reduce environment and software specific dependency and due to portability easy to share, apart from cloud-agnostic (as major cloud vendors support container)
@@ -48,10 +48,10 @@ Local machine (Mac/Linux)
 
 
 5. After completing the job, lets connect to postgres DB using below command using terminal ;
-    "docker exec -it some-postgres_db psql -U postgres""
-    \c postgres #select default schema
-    \gt # list table
-    select * from moviedataanalysis
+            "docker exec -it some-postgres_db psql -U postgres""
+            \c postgres #select default schema
+            \gt # list table
+            select * from moviedataanalysis
 
 
 
@@ -62,36 +62,38 @@ Hadoop cluster
 4. export uber.jar (MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar) to cluster edge/client node where we can submit the spark job.
 5 use below command to submit the job and supply/replace the additional parameters for config (executor, memory and so on if require)
 
-spark-submit \
---class com.foo.movie.main.MovieMainCls \
---master local[*] --deploy-mode client \
---name PilotProject_MovieData \
---conf "spark.driver.bindAddress=127.0.0.1" \
-MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar
---principal dataee@HDP.SANDBOX.LOCAL \
---keytab /home/prashant.gupta/dataee.keytab \
---files "/home/prashant.gupta/kafka_client_jaas.conf,/home/prashant.gupta/krb5.conf" \
---conf "spark.executor.extraClassPath=/home/prashant.gupta/Test/MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar" \
---conf "spark.executor.extraJavaOptions=-Djava.security.auth.login.config=/home/dataee/kafka_client_jaas.conf,-Djava.security.krb5.conf=/home/dataee/krb5.conf" \
+
+        spark-submit \
+        --class com.foo.movie.main.MovieMainCls \
+        --master local[*] --deploy-mode client \
+        --name PilotProject_MovieData \
+        --conf "spark.driver.bindAddress=127.0.0.1" \
+        MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar
+        --principal dataee@HDP.SANDBOX.LOCAL \
+        --keytab /home/prashant.gupta/dataee.keytab \
+        --files "/home/prashant.gupta/kafka_client_jaas.conf,/home/prashant.gupta/krb5.conf" \
+        --conf "spark.executor.extraClassPath=/home/prashant.gupta/Test/MovieDataAnalysis-1.0-SNAPSHOT-jar-with-dependencies.jar" \
+        --conf "spark.executor.extraJavaOptions=-Djava.security.auth.login.config=/home/dataee/kafka_client_jaas.conf,-         Djava.security.krb5.conf=/home/dataee/krb5.conf" \
 
 5. After completing the job, let us connect to Postgres DB using below command using terminal ;
-    1.ssh to the node where DB connectivity available OR use any UI based db query tool
-    2. supply hostname or IP address,user-name, password
+            
+            1.ssh to the node where DB connectivity available OR use any UI based db query tool
+            2. supply hostname or IP address,user-name, password
 
-    select * from moviedataanalysis
+            select * from moviedataanalysis
 
 
 Steps for Azure container instances:
-1.GO to Azure Container Instances
-2.Create container instance
-3 choose 	Docker Hub or other registry and gave URL as "hub.docker.com/postgres"
-4. choose the appropriate option and deploy
+        1.GO to Azure Container Instances
+        2.Create container instance
+        3 choose 	Docker Hub or other registry and gave URL as "hub.docker.com/postgres"
+        4. choose the appropriate option and deploy
 
 
 Steps for Azure Databricks
-1.GO to Azure Databricks
-2.create a data bricks cluster with required resource
-3. once data bricks cluster
+        1.GO to Azure Databricks
+        2.create a data bricks cluster with required resource
+        3. once data bricks cluster
 
 
 automatic optimization process
