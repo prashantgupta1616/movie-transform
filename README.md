@@ -87,37 +87,38 @@ Tech stack used
     select * from postgres.moviedataanalysis
 
 
-<!-- Using Cloud Platform -->
+**Using Cloud Platform **
+
+
 
 **Microsoft AZURE **
 
 option-1
 **Using Azure container instances**
 
-Steps for Azure container instances:
 1.  GO to Azure Container Instances
 2.  Create container instance
-3.   choose 	Docker Hub or other registry and gave URL as "hub.docker.com/postgres"
-4.  choose the appropriate option and deploy
-5. build a docker image with source code with spark image and upload the image and tag it to registry to ACR as ;
-      - Create an Azure Container Registry (ACR) instance
-      - az acr login --name myregistry
-      - docker login myregistry.azurecr.io
-      - docker tag moviedataanalysis myregistry.azurecr.io/data/moviedataanalysis
-      - docker push myregistry.azurecr.io/data/moviedataanalysis:v1
+3.  Choose 	Docker Hub or other registry and gave URL as "hub.docker.com/postgres"
+4.  Choose the appropriate option and deploy
+5.  Build a docker image with source code with spark image and upload the image and tag it to registry to ACR as ;
+        - Create an Azure Container Registry (ACR) instance
+        - az acr login --name myregistry
+        - docker login myregistry.azurecr.io
+        - docker tag moviedataanalysis myregistry.azurecr.io/data/moviedataanalysis
+        - docker push myregistry.azurecr.io/data/moviedataanalysis:v1
 
 
 option-2
 **Using Azure Databricks cluster service**
 Steps for Azure Databricks
-1.GO to Azure Databricks, create an instance of Databricks service.
-2.create a data bricks cluster with required resource
-3. once data bricks cluster up and running, upload the jar file and data to azure data lakes, change required config and paths to run at Azure
+1. GO to Azure Databricks, create an instance of Databricks service.
+2. Create a data bricks cluster with required resource
+3. Once data bricks cluster up and running, upload the jar file and data to azure data lakes, change required config and paths to run at Azure
 
 
 
-Google cloud platform
-option-1
+**Google cloud platform **
+
 
 This approach is very much similar to Azure only services name will be different 
 
