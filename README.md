@@ -126,13 +126,13 @@ This approach is very much similar to Azure only services name will be different
 2.tag build docker source code image to the registry
 3.Execute image either on compute instance and the best way is to deploy it on Kubernetes cluster
 
-NOTE: These above steps can be automated using CI/CD pipelines tool like Jenkins/Spinker/Azure deploy
+**NOTE: These above steps can be automated using CI/CD pipelines tool like Jenkins/Spinker/Azure deploy**
 
 
 **Testing Approach**
 1. Add and create test data for movie, rating, links, Wikipedia.
-2. Ingest this data in the same directory of each dataset location
+2. Ingest this data in the same directory of each dataset location's
 3. Run the movieDataAnlsysis spark job again and let's wait to ingest this data in to Postgres DB
-4. Login into Postgres DB and query the specific data posted for the testing and validate the result that will help for the data correctness
+4. Login into Postgres DB and query the specific data posted for the testing and validate the result that will help to vlaidate the data correctness
 
 All the above steps can be automated using a cucumber based BDD approach, which will take the data correctness in terms of various scenarios.
